@@ -3,17 +3,19 @@
 # Aiden Hall, Dustin Zentz, and Will Price
 # Umass Amherst, Math 552, Whitaker, spring 2014
 echo 'Julia vs Octave Benchmark'
-touch julia_times
-touch octave_times
 
-$JULIA = /home/aiden/school/552/project/julia
-$OCTAVE = /home/aiden/school/552/project/octave
+rm julia_times
+rm octave_times
 
-# FFT/iFFT benchmark
-for i in {1..8}; do
-    echo $i
-    echo julia
-    julia $JULIA/bench_fft.jl $i >> julia_times
-    echo octave
-    octave -q $OCTAVE/bench_fft.m $i >> octave_times
-done
+# pass title, number of iterations, and file locations (julia then octave)
+function bench {
+    echo $1 | tee -a julia_times octave_times
+    for (( i=1; i<=$2; i++)); do
+        echo $i | tee -a julia_times octave_times
+        julia $3 $i >> julia_times
+        octave -q $4 $i >> octave_times
+    done
+}
+
+bench 'FFT' 8 ./julia/bench_fft.jl ./octave/bench_fft.m
+bench 'iFFT' 8 ./julia/bench_ifft.jl ./octave/bench_ifft.m
