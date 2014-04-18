@@ -14,7 +14,7 @@ function bench {
     echo "
 $1" | tee -a julia_times octave_times
     for (( i=1; i<=$2; i++)); do
-        echo $i | tee -a julia_times octave_times
+        echo "iteration $i"
         julia $3 $i $5 $6 >> julia_times
         octave -q $4 $i $5 $6 >> octave_times
     done

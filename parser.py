@@ -1,3 +1,4 @@
+from collections import OrderedDict
 import sys
 
 
@@ -21,7 +22,7 @@ def parse(f):
     tests = f.read().split('\n\n')
     parsed = []
     for test in tests:
-        info = {}
+        info = OrderedDict()
         lines = filter(lambda s: s, test.split('\n'))
         info['title'], lines = lines[0], lines[1:]
         for inputv, outputv in n_pairs(lines, lens[info['title']]\
