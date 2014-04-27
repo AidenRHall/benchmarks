@@ -39,11 +39,18 @@ def writeline(key, info1, info2):
         print '\t'.join((line1, line2))
 
 def tabify(inpt, jval, oval):
-    inshift = 2
-    tablen = 6
+    inshift = 4
+    tablen = 7
+    lines = jval.count('\n')
+    jval = jval.split('\n')
+    oval = oval.split('\n')
     jshift = inshift - len(inpt)/8
-    oshift = tablen - len(jval)/8
-    return ''.join((inpt, jshift*'\t', jval, oshift*'\t', oval))
+    oshift = tablen - len(jval[0])/8
+    construct = ''.join((inpt, jshift*'\t', jval[0], oshift*'\t', oval[0]))
+    for j, o in zip(jval[1:], oval[1:]):
+        oshift = tablen - len(j)/8
+        construct += '\n' + ''.join((inshift*'\t', j, oshift*'\t', o))
+    return construct
 
 def output(info):
     if len(info) > 2:
@@ -53,7 +60,7 @@ def output(info):
             print 'TEST:', julia['title']
         else:
             print 'TEST:', julia['title'], 'or', octave['title']
-        print 'input', 2*'\t', 'Julia', 6*'\t', 'Octave'
+        print 'input', 4*'\t', 'Julia', 7*'\t', 'Octave'
         del julia['title']
         del octave['title']
         for (jk, jval), (ok, oval) in zip(julia.items(), octave.items()):
