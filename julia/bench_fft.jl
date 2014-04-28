@@ -1,7 +1,8 @@
-p = int(ARGS[1])
-ex = 10^p
-println(ex)
-fft([1])
+p = int(ARGS[1]);
+ex = 10^p;
+println(ex);
+
+r = rand(ex);
 
 # load functions
 try
@@ -10,8 +11,9 @@ try
     toc();
 end
 
-r = rand(ex)
-
-tic()
-r = fft(r)
-toc()
+fft(r + 1);
+try
+    tic();
+    r = fft(r);
+    toc();
+end

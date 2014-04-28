@@ -20,8 +20,11 @@ $1" | tee -a julia_times octave_times
     done
 }
 
+# Comment out completed benchmarks so we dont have to
+# run them each time we run new ones
+# 
 bench 'FFT' 7 ./julia/bench_fft.jl ./octave/bench_fft.m
 bench 'iFFT' 7 ./julia/bench_ifft.jl ./octave/bench_ifft.m
-bench 'Iteration' 7 ./julia/bench_iteration.jl ./octave/bench_iteration.m
+bench 'Iterative Addition' 7 ./julia/bench_iteration.jl ./octave/bench_iteration.m
 
 python parser.py julia_times octave_times | less
