@@ -10,8 +10,12 @@ try
     toc();
 end
 
-tic()
-for i = 1:ex
-    s += 1
+# put tic and toc in try to deal with the
+# associated overhead, which is significant
+try
+    tic()
+    for i = 1:ex
+        s += 1
+    end
+    toc()
 end
-toc()
