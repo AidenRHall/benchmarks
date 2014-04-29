@@ -34,7 +34,7 @@ bench 'Int to String' 2 ./julia/bench_ints.jl ./octave/bench_ints.m
 eog pictures/Whitaker.jpg
 bench 'Image FFT' 1 ./julia/bench_pics.jl ./octave/bench_pics.m pictures/Whitaker.jpg
 
-python parser.py julia_times octave_times | less
+python parser.py julia_times octave_times | tee output.txt | less
 
 if [ -f julia_times ]; then
     rm julia_times
@@ -42,19 +42,3 @@ fi
 if [ -f octave_times ]; then
     rm octave_times
 fi
-
-
-# Will
-time julia -q -p 4 ./julia/kgsolv.jl
-time octave -q ./octave/kgsolv.m
-time julia -q -p 4 ./julia/partest.jl
-time julia -q -p 4 ./julia/tumour.jl
-
-
-# Dustin
-sleep 2
-echo ''
-echo 'your turn Dustin!'
-read
-
-# Code goes here
