@@ -31,6 +31,8 @@ bench '50x50 matrix' 3 ./julia/bench_matrix.jl ./octave/bench_matrix.m 50
 bench '100x100 matrix' 2 ./julia/bench_matrix.jl ./octave/bench_matrix.m 100
 bench 'String to Int' 3 ./julia/bench_strings.jl ./octave/bench_strings.m
 bench 'Int to String' 2 ./julia/bench_ints.jl ./octave/bench_ints.m
+eog pictures/Whitaker.jpg
+bench 'Image FFT' 1 ./julia/bench_pics.jl ./octave/bench_pics.m pictures/Whitaker.jpg
 
 python parser.py julia_times octave_times | less
 
@@ -43,10 +45,6 @@ fi
 
 
 # Will
-echo ''
-echo 'your turn Will!'
-read
-
 time julia -q -p 4 ./julia/kgsolv.jl
 time octave -q ./octave/kgsolv.m
 time julia -q -p 4 ./julia/partest.jl
@@ -58,3 +56,5 @@ sleep 2
 echo ''
 echo 'your turn Dustin!'
 read
+
+# Code goes here
