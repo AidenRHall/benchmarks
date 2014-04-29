@@ -2,6 +2,7 @@
 #
 # Aiden Hall, Dustin Zentz, and Will Price
 # Umass Amherst, Math 552, Whitaker, spring 2014
+cls
 echo 'Julia vs Octave Benchmark'
 
 rm julia_times
