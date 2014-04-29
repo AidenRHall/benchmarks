@@ -2,11 +2,10 @@
 #
 # Aiden Hall, Dustin Zentz, and Will Price
 # Umass Amherst, Math 552, Whitaker, spring 2014
-cls
+#
+# Start by clearing the screen
+printf "\033c"
 echo 'Julia vs Octave Benchmark'
-
-rm julia_times
-rm octave_times
 
 # pass title, number of iterations, and file locations (julia then octave)
 # pass any other arguments necessary as well, but they should be identical
@@ -21,15 +20,36 @@ $1" | tee -a julia_times octave_times
     done
 }
 
-# Comment out completed benchmarks so we dont have to
-# run them each time we run new ones
-# 
-bench 'FFT' 7 ./julia/bench_fft.jl ./octave/bench_fft.m
-bench 'iFFT' 7 ./julia/bench_ifft.jl ./octave/bench_ifft.m
-bench 'Iterative Addition' 7 ./julia/bench_iteration.jl ./octave/bench_iteration.m
+# Aiden
+#bench 'FFT' 7 ./julia/bench_fft.jl ./octave/bench_fft.m
+#bench 'iFFT' 7 ./julia/bench_ifft.jl ./octave/bench_ifft.m
+#bench 'Iterative Addition' 7 ./julia/bench_iteration.jl ./octave/bench_iteration.m
+bench 'RK4' 3 ./julia/bench_rk4.jl ./octave/bench_rk4.m
 
 python parser.py julia_times octave_times | less
 
+if [ -f julia_times ]; then
+    rm julia_times
+fi
+if [ -f octave_times ]; then
+    rm octave_times
+fi
+
 
 # Will
-julia -p 4
+sleep 2
+echo ''
+echo 'your turn Will!'
+read
+
+time julia -q -p 4 ./julia/kgsolv.jl
+time octave -q ./octave/kgsolv.m
+time julia -q -p 4 ./julia/partest.jl
+time julia -q -p 4 ./julia/tumour.jl
+
+
+# Dustin
+sleep 2
+echo ''
+echo 'your turn Dustin!'
+read
