@@ -20,5 +20,11 @@ try
     for i = 1:ex
         A*B
     end
+    toq()
+
+    tic()
+    for i = 1:ex
+        B*A
+    end
     toc()
 end
