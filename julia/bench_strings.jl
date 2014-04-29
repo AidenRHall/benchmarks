@@ -1,7 +1,6 @@
 p = int(ARGS[1])
 ex = 100*10^p
 println(ex)
-s = 1 + 1
 
 # load functions
 try
@@ -15,7 +14,7 @@ end
 try
     tic()
     for i = 1:ex
-        s += 1
+        int("69");
     end
     toc()
 end

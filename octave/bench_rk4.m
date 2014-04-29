@@ -1,6 +1,6 @@
 args = argv();
 p = str2num(args{1});
-ex = 100*(10**p);
+ex = 100*10**p;
 h = 100/ex;
 printf('%d\n', ex);
 y = zeros(ex, 1);

@@ -21,10 +21,16 @@ $1" | tee -a julia_times octave_times
 }
 
 # Aiden
-#bench 'FFT' 7 ./julia/bench_fft.jl ./octave/bench_fft.m
-#bench 'iFFT' 7 ./julia/bench_ifft.jl ./octave/bench_ifft.m
-#bench 'Iterative Addition' 7 ./julia/bench_iteration.jl ./octave/bench_iteration.m
+bench 'FFT' 5 ./julia/bench_fft.jl ./octave/bench_fft.m
+bench 'iFFT' 5 ./julia/bench_ifft.jl ./octave/bench_ifft.m
+bench 'Iterative Addition' 5 ./julia/bench_iteration.jl ./octave/bench_iteration.m
 bench 'RK4' 3 ./julia/bench_rk4.jl ./octave/bench_rk4.m
+bench '2x2 matrix' 3 ./julia/bench_matrix.jl ./octave/bench_matrix.m 2
+bench '10x10 matrix' 3 ./julia/bench_matrix.jl ./octave/bench_matrix.m 10
+bench '50x50 matrix' 3 ./julia/bench_matrix.jl ./octave/bench_matrix.m 50
+bench '100x100 matrix' 2 ./julia/bench_matrix.jl ./octave/bench_matrix.m 100
+bench 'String to Int' 3 ./julia/bench_strings.jl ./octave/bench_strings.m
+bench 'Int to String' 2 ./julia/bench_ints.jl ./octave/bench_ints.m
 
 python parser.py julia_times octave_times | less
 
@@ -37,7 +43,6 @@ fi
 
 
 # Will
-sleep 2
 echo ''
 echo 'your turn Will!'
 read

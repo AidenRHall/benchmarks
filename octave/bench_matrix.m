@@ -1,10 +1,14 @@
 args = argv();
 p = str2num(args{1});
+n = str2num(args{2});
 ex = 100*10**p;
 printf('%d\n', ex);
-r = rand(ex, 1);
 
-fft(1:ex);
+A = rand(n);
+B = rand(n);
+
 tic;
-fft(r);
+for i = 1:ex
+    A*B;
+end
 toc;

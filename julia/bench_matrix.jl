@@ -1,7 +1,10 @@
 p = int(ARGS[1])
+n = int(ARGS[2])
 ex = 100*10^p
 println(ex)
-s = 1 + 1
+
+A = rand(n, n)
+B = rand(n, n)
 
 # load functions
 try
@@ -15,7 +18,7 @@ end
 try
     tic()
     for i = 1:ex
-        s += 1
+        A*B
     end
     toc()
 end
