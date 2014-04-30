@@ -1,5 +1,7 @@
 function partest(n)
-        
+        include("kgsolv.jl")
+        include("tumour.jl")
+        include("kgsolvpar.jl")
         if n == 0
                 println("Creating 3 1000x1000 matrices...")
                 println("Using 1 core:")
