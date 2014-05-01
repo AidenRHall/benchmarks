@@ -16,7 +16,7 @@ $1" | tee -a julia_times octave_times
     for (( i=1; i<=$2; i++)); do
         echo "iteration $i"
         julia -q $3 $i $5 $6 >> julia_times
-        octave -q $4 $i $5 $6 >> octave_times
+        octave -q --jit-compiler $4 $i $5 $6 >> octave_times
     done
 }
 
