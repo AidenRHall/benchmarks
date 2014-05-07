@@ -1,6 +1,6 @@
 #! /usr/local/bin/octave -qf
 
-% Author: Dustin Zentz 
+% Author: Dustin Zentz
 % -- Test 1 --
 % Generate N, psuedo-random numbers on [0,1]
 % ------------
@@ -20,7 +20,7 @@ toc;
 % ------------
 
 D = 100; % dimensions
-n = 1000000; % number of tuples 
+n = 1000000; % number of tuples
 
 disp('Test 2: Generate a million uniform, 100-dimensional, psuedo-rand tuples');
 tic;
@@ -48,12 +48,12 @@ randZ = rand(N, 1);
 count = 0;
 for i=1:N
 if( randZ(i) <= zz(randX(i), randY(i)) )
-count = count + 1; % this pt. lies under the surface 
+count = count + 1; % this pt. lies under the surface
 end
 end
 toc();
 
-total_vol = 16^2; disp('Total number of sample points: 10,000.');
+total_vol = 16^2; disp('Total number of sample points: 25,000.');
 disp('Total Volume under the surface: ');
 integral_vol = total_vol*(count/N)
 
